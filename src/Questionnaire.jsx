@@ -10,7 +10,7 @@ const Questionnaire = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = { name, color, movie };
-        axios.post('http://54.152.116.148:8000/api/questionnaire/', data)
+        axios.post(`${import.meta.env.VITE_API_URL}/api/questionnaire/`, data)
             .then(res => {
                 alert('Questionnaire submitted!');
             })
