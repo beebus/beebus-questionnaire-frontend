@@ -9,13 +9,14 @@ const Results = () => {
         const fetchResults = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/results/`);
-                setResults(response.data);
+                const data = response.data;
+                setResults(Array.isArray(data) ? data : data.results ?? []);
             } catch (error) {
                 console.error('Error fetching results:', error);
             }
         };
 
-        fetchResults().then(r => {});
+        void fetchResults();
     }, []);
 
     return (
